@@ -4,57 +4,57 @@ module.exports = function(shariff) {
   var url = shariff.getURL()
   var dialogTitle = shariff.getTitle()
   var shariffLang = shariff.getOption('lang')
+  var fbLang = 'en_US'
   var dialogClose = 'Close'
-  var fbUrl = 'https://www.facebook.com/plugins/like.php?href=' +
-    encodeURIComponent(url) + shariff.getReferrerTrack()
-  var height = 65
+  var fbScript = '<script async defer crossorigin="anonymous" src="https://connect.facebook.net/'
+  var fbDiv = '<div class="fb-like" data-href="' + encodeURIComponent(url) + shariff.getReferrerTrack()
   var minWidth = 47
   var stdWidth = 103
-  var dialogHtml = '<div>' + '<h1 class="dialogtitle">'
+  var dialogHtml = '<div id="fb-root"></div>'
   var fblikeOptions = shariff.getFacebooklikeOptions()
   switch (shariffLang) {
-  case 'bg': dialogClose = 'Близо'; break
-  case 'cs': dialogClose = 'Zavřít'; break
-  case 'da': dialogClose = 'Luk'; break
-  case 'de': dialogClose = 'Schließen'; break
-  case 'es': dialogClose = 'Cerrar'; break
-  case 'fi': dialogClose = 'Sulje'; break
-  case 'fr': dialogClose = 'Fermer'; break
-  case 'hr': dialogClose = 'Zatvoriti'; break
-  case 'hu': dialogClose = 'Bezár'; break
-  case 'it': dialogClose = 'Chiudi'; break
-  case 'ja': dialogClose = '閉じる'; break
-  case 'ko': dialogClose = '닫기'; break
-  case 'nl': dialogClose = 'Sluiten'; break
-  case 'no': dialogClose = 'Lukk'; break
-  case 'pl': dialogClose = 'Zamknij'; break
-  case 'pt': dialogClose = 'Fechar'; break
-  case 'ro': dialogClose = 'Închide'; break
-  case 'ru': dialogClose = 'Закрыть'; break
-  case 'sk': dialogClose = 'Zatvoriť'; break
-  case 'sl': dialogClose = 'Zapri'; break
-  case 'sr': dialogClose = 'Zatvori'; break
-  case 'sv': dialogClose = 'Stäng'; break
-  case 'tr': dialogClose = 'Kapatın'; break
-  case 'zh': dialogClose = '关闭'; break
+  case 'bg': dialogClose = 'Близо'; fbLang = 'bg_BG'; break
+  case 'cs': dialogClose = 'Zavřít'; fbLang = 'cs_CZ'; break
+  case 'da': dialogClose = 'Luk'; fbLang = 'da_DK'; break
+  case 'de': dialogClose = 'Schließen'; fbLang = 'de_DE'; break
+  case 'es': dialogClose = 'Cerrar'; fbLang = 'es_ES'; break
+  case 'fi': dialogClose = 'Sulje'; fbLang = 'fi_FI'; break
+  case 'fr': dialogClose = 'Fermer'; fbLang = 'fr_FR'; break
+  case 'hr': dialogClose = 'Zatvoriti'; fbLang = 'hr_HR'; break
+  case 'hu': dialogClose = 'Bezár'; fbLang = 'hu_HU'; break
+  case 'it': dialogClose = 'Chiudi'; fbLang = 'it_IT'; break
+  case 'ja': dialogClose = '閉じる'; fbLang = 'ja_JP'; break
+  case 'ko': dialogClose = '닫기'; fbLang = 'ko_KR'; break
+  case 'nl': dialogClose = 'Sluiten'; fbLang = 'nl_NL'; break
+  case 'no': dialogClose = 'Lukk'; fbLang = 'nb_NO'; break
+  case 'pl': dialogClose = 'Zamknij'; fbLang = 'pl_PL'; break
+  case 'pt': dialogClose = 'Fechar'; fbLang = 'pt_PT'; break
+  case 'ro': dialogClose = 'Închide'; fbLang = 'ro_RO'; break
+  case 'ru': dialogClose = 'Закрыть'; fbLang = 'ru_RU'; break
+  case 'sk': dialogClose = 'Zatvoriť'; fbLang = 'sk_SK'; break
+  case 'sl': dialogClose = 'Zapri'; fbLang = 'sl_SI'; break
+  case 'sr': dialogClose = 'Zatvori'; fbLang = 'sr_RS'; break
+  case 'sv': dialogClose = 'Stäng'; fbLang = 'sv_SE'; break
+  case 'tr': dialogClose = 'Kapatın'; fbLang = 'tr_TR'; break
+  case 'zh': dialogClose = '关闭'; fbLang = 'zh_CN'; break
   }
+  fbScript += fbLang + '/sdk.js#xfbml=1&version=v11.0'
+  fblikeOptions.appId = fblikeOptions.appId || (shariff.getMeta('fb:app_id') || null)
+  if (fblikeOptions.appId !== null) {
+    fbScript += '&appId=' + fblikeOptions.appId
+    fblikeOptions.appId = null
+  }
+  fbScript += '&autoLogAppEvents=1 nonce="Kw8QY9uP"></script>'
   switch (fblikeOptions.layout) {
   case 'standard':
-    if (fblikeOptions.show_faces) {
-      height = 80
-    } else {
-      height = 35
-    }
     minWidth = 225
     stdWidth = 450
     break
   case 'box_count':
-    height = 65
     minWidth = 55
     stdWidth = 103
     break
   case 'button_count':
-    height = 46
     minWidth = 90
     stdWidth = 154
     break
@@ -64,22 +64,15 @@ module.exports = function(shariff) {
   } else if (fblikeOptions.width < minWidth) {
     fblikeOptions.width = minWidth
   }
-  fblikeOptions.appId = fblikeOptions.appId || (shariff.getMeta('fb:app_id') || null)
   for (var opt in fblikeOptions) {
     if (fblikeOptions.hasOwnProperty(opt) && typeof fblikeOptions[opt] !== 'undefined' && fblikeOptions[opt] !== null) {
-      fbUrl += '&' + opt + '=' + fblikeOptions[opt]
+      fbDiv += ' data-' + opt + '="' + fblikeOptions[opt] + '"'
     }
   }
-  fbUrl += '&height=' + height
-  dialogHtml += dialogTitle + '</h1>' +
-      '<a class="dialoglink" href="' + url + '">' +
-      url + '</a></div>' +
-      '<div class="facebooklike"><iframe src="' + fbUrl + '" ' +
-      'width="' + fblikeOptions.width + '" height="' + height + '" style="border:none;overflow:hidden" ' +
-      'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></div>' +
-      '<div>' +
-      '<button class="dialogbutton" onclick="self.close()">' +
-      dialogClose + '</button></div>'
+  fbDiv += '</div>'
+  dialogHtml += fbScript + '<div>' + '<h1 class="dialogtitle">' + dialogTitle + '</h1>' +
+    '<a class="dialoglink" href="' + url + '">' + url + '</a></div>' + fbDiv
+    '<div>' + '<button class="dialogbutton" onclick="self.close()">' + dialogClose + '</button></div>'
   return {
     popup: true,
     shareText: {
