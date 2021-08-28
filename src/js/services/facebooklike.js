@@ -44,7 +44,7 @@ module.exports = function(shariff) {
     fbScript += '&appId=' + fblikeOptions.appId
     fblikeOptions.appId = null
   }
-  fbScript += '&autoLogAppEvents=1 nonce="Kw8QY9uP"></script>'
+  fbScript += '&autoLogAppEvents=1" nonce="Kw8QY9uP"></script>'
   switch (fblikeOptions.layout) {
   case 'standard':
     minWidth = 225
