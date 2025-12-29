@@ -230,19 +230,19 @@ export class Shariff {
       if (this.isEnabledService(serviceName) && doAppend) {
         let counter = document.createElement('span');
         counter.classList.add('share_count');
-        counter.innerHTML = fbValue;
+        counter.innerHTML = value;
         this.element
           .querySelector(`.${serviceName} a`)
           .append(counter);
       }
-      if (this.isEnabledService('facebooklike') && (fbValue !== null) && this.options.facebookCountBtn !== 'share') {
-        let counter = document.createElement('span');
-        counter.classList.add('share_count');
-        counter.innerHTML = value;
-        this.element
-          .querySelector(`.facebooklike a`)
-          .append(counter);
-      }
+    }
+    if (this.isEnabledService('facebooklike') && (fbValue !== null) && this.options.facebookCountBtn !== 'share') {
+      let counter = document.createElement('span');
+      counter.classList.add('share_count');
+      counter.innerHTML = fbValue;
+      this.element
+        .querySelector(`.facebooklike a`)
+        .append(counter);
     }
   }
 
