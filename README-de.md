@@ -21,7 +21,8 @@ Shariff besteht aus zwei Teilen. Der erste Teil ist eine einfache JavaScript-Bib
     * `shariff.min.min.css` verwenden, wenn [Font Awesome](https://github.com/FortAwesome/Font-Awesome) bereits in Ihrer Seite geladen wird
     * Zum Debuggen kann jeweils die unminifizierten Datei `shariff.complete.css` oder `shariff.min.css` verwendet werden.
 4. JavaScript im `<head>` einbinden:
-    * `<script async src="shariff.complete.js" type="module"></script>`
+    * `<script async src="shariff.complete.min.js" type="module"></script>`
+    * Zum Debuggen kann die unminifizierten Datei `shariff.complete.js` verwendet werden.
 5. Beliebig viele `<div class="shariff">` Elemente einfügen
 6. Mit den unten beschriebenen `data`-Attributen Aussehen und Funktion konfigurieren
 
