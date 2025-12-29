@@ -70,9 +70,12 @@ demo/*.ttf
 demo/*.woff2
 demo/app.css
 demo/facebooklike_dlg.css
+demo/facebooklike_dlg.min.css
 demo/shariff.complete.css
 demo/shariff.complete.js
+demo/shariff.complete.min.css
 demo/shariff.min.css
+demo/shariff.min.min.css
 
 # test files
 test/shariff.complete.js

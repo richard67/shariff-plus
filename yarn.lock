@@ -423,6 +423,11 @@ delayed-stream@~1.0.0:
   resolved "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
+detect-libc@^2.0.3:
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/detect-libc/-/detect-libc-2.0.4.tgz"
+  integrity sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==
+
 diff@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/diff/-/diff-5.2.0.tgz"
@@ -995,6 +1000,34 @@ levn@^0.4.1:
   dependencies:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
+
+lightningcss-cli-linux-x64-gnu@1.29.3:
+  version "1.29.3"
+  resolved "https://registry.npmjs.org/lightningcss-cli-linux-x64-gnu/-/lightningcss-cli-linux-x64-gnu-1.29.3.tgz"
+  integrity sha512-QG6MRwt2P12F+Nn6Q3T1yUkVFp2o9KfiR3TFRQHlJ9CW097p5Rn9LpdhiLG5+451mZYHSvUIfFeIf4agv4URcQ==
+
+lightningcss-cli-linux-x64-musl@1.29.3:
+  version "1.29.3"
+  resolved "https://registry.npmjs.org/lightningcss-cli-linux-x64-musl/-/lightningcss-cli-linux-x64-musl-1.29.3.tgz"
+  integrity sha512-qyfNGsXDorHq66HdVaeqDp2lC/r74AbC3yJv8w3UorBaLNo9wr/fPKLE/JHPp9/Gf4z90jsTQtMr/KRGTQocLA==
+
+lightningcss-cli@^1.29.3:
+  version "1.29.3"
+  resolved "https://registry.npmjs.org/lightningcss-cli/-/lightningcss-cli-1.29.3.tgz"
+  integrity sha512-mgxjqu/XmceiHel6ihNShWM+KTx8wctg4zkQmcBmd0fTqkIENHq1yRWqMAIZQe3wzp75XP8CcA/cGmazlsDawg==
+  dependencies:
+    detect-libc "^2.0.3"
+  optionalDependencies:
+    lightningcss-cli-darwin-arm64 "1.29.3"
+    lightningcss-cli-darwin-x64 "1.29.3"
+    lightningcss-cli-freebsd-x64 "1.29.3"
+    lightningcss-cli-linux-arm-gnueabihf "1.29.3"
+    lightningcss-cli-linux-arm64-gnu "1.29.3"
+    lightningcss-cli-linux-arm64-musl "1.29.3"
+    lightningcss-cli-linux-x64-gnu "1.29.3"
+    lightningcss-cli-linux-x64-musl "1.29.3"
+    lightningcss-cli-win32-arm64-msvc "1.29.3"
+    lightningcss-cli-win32-x64-msvc "1.29.3"
 
 locate-path@^6.0.0:
   version "6.0.0"
