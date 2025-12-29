@@ -20,9 +20,8 @@ Shariff consists of two parts: a simple JavaScript client library and an optiona
     * `shariff.complete.min.css` uses the dependencies included in the release files
     * if [Font Awesome](https://github.com/FortAwesome/Font-Awesome) is already included in your site, use `shariff.min.min.css`
     * For debug you can use the unminified file `shariff.complete.css` or `shariff.min.css`.
-4. Include JavaScript right before `</body>`:
-    * `shariff.complete.js` uses the dependencies included in the release files
-    * if [jQuery](https://github.com/jquery/jquery) is already included in your site, use `shariff.min.js`
+4. Include JavaScript in `<head>`:
+    * `<script async src="shariff.complete.js" type="module"></script>`
 5. Insert one or more `<div class="shariff">` elements.
 6. Customize the look using data-* attributes.
 
@@ -35,6 +34,7 @@ Usage example:
 <html>
 <head>
     <link href="/path/to/shariff.min.css" rel="stylesheet">
+    <script async src="shariff.complete.js" type="module"></script>
 </head>
 <body>
     <h1>My article</h1>
@@ -45,9 +45,6 @@ Usage example:
 
     <h2>More advanced buttons:</h2>
     <div class="shariff" data-backend-url="/path/to/backend" data-url="https://www.example.com/my-article.html" data-theme="grey" data-orientation="vertical"></div>
-
-    <!-- immediately before </body> -->
-    <script src="/path/to/shariff.min.js"></script>
 </body>
 </html>
 ```
