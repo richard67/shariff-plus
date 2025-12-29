@@ -17,11 +17,12 @@ Shariff consists of two parts: a simple JavaScript client library and an optiona
 1. Download the [latest release](https://github.com/richard67/shariff-plus/releases/latest)
 2. Upload all files included in the release
 3. Include CSS in `<head>`:
-    * `shariff.complete.css` uses the dependencies included in the release files
-    * if [Font Awesome](https://github.com/FortAwesome/Font-Awesome) is already included in your site, use `build/shariff.min.css`
+    * `shariff.complete.min.css` uses the dependencies included in the release files
+    * if [Font Awesome](https://github.com/FortAwesome/Font-Awesome) is already included in your site, use `shariff.min.min.css`
+    * For debug you can use the unminified file `shariff.complete.css` or `shariff.min.css`.
 4. Include JavaScript right before `</body>`:
     * `shariff.complete.js` uses the dependencies included in the release files
-    * if [jQuery](https://github.com/jquery/jquery) is already included in your site, use `build/shariff.min.js`
+    * if [jQuery](https://github.com/jquery/jquery) is already included in your site, use `shariff.min.js`
 5. Insert one or more `<div class="shariff">` elements.
 6. Customize the look using data-* attributes.
 
@@ -93,7 +94,7 @@ Differences to Shariff are marked with (1), (2) and so on and explained below th
 | `data-button-style` | How to display the buttons. Values: `standard`, `icon`, `icon-count`. With `icon` only the icon is shown, with `icon-count` icon and counter and with `standard` icon, text and counter are shown, depending on the display size.  | `standard` |
 | `data-dialogs-media-url` (1) | The path to css or js for special dialogs like e.g. the one of the `facebooklike` service. This has to be an absolute URL. Example: `https://www.example.com/shariff`. This allows to use own css e.g. for the `facebooklike` dialog. | Path to directory where Shariff-Plus is installed. |
 | `data-facebook-count-btn` (1) | The button(s) which shall show the counter from backend if both services `facebook` and `facebooklike` are used. Values: `like`, `share`, `both`. | `like` |
-| `data-facebooklike-css` (1) | Name of the CSS file for the `facebooklike` dialog. The file has to be present in the folder specified by the `data-dialogs-media-url` option. Example : `data-facebooklike-css="my-styles.css"`. | `facebooklike_dlg.css` |
+| `data-facebooklike-css` (1) | Name of the CSS file for the `facebooklike` dialog. The file has to be present in the folder specified by the `data-dialogs-media-url` option. Example : `data-facebooklike-css="my-styles.css"`. | `facebooklike_dlg.min.css` |
 | `data-facebooklike-options` (1) | An entity-encoded JSON string containing an object with options for the Facebook "Like" button as provided by the Facebook configurator for that button. Example with default values of Facebook: `data-facebooklike-options="{&quot;width&quot;:450,&quot;layout&quot;:&quot;standard&quot;,&quot;action&quot;:&quot;like&quot;,&quot;size&quot;:&quot;large&quot;,&quot;show_faces&quot;:true,&quot;share&quot;:true,&quot;appId&quot;:&quot;99999&quot;}"` with 99999 = Facebook `app_id`. | See example, with appId = value of the `fb:app_id` meta tag or `null` if not defined. |
 | `data-info-url` (2) | URL of the info page. | `https://www.richard-fath.de/de/software/shariff-plus.html` |
 | `data-info-display` | How to display the info page. Values: `blank`, `popup`, `self`. | `blank` |
