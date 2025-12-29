@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   return {
     blank: shariff.getInfoDisplayBlank(),
     popup: shariff.getInfoDisplayPopup(),

@@ -1,7 +1,7 @@
 'use strict'
 
-module.exports = function (shariff) {
-  var url = shariff.getOption('mailUrl')
+export default function data(shariff) {
+  var url = encodeURI(shariff.getOption('mailUrl'))
 
   // mailto: link? Add body and subject.
   if (url.indexOf('mailto:') === 0) {

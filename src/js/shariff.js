@@ -1,18 +1,10 @@
-'use strict'
-
-// require('babel-polyfill')
-
-const $ = require('./dom')
-const services = require('./services')
-const url = require('url')
+import * as services from './services/index.js';
 
 const shariffScript = document.currentScript ||
   document.querySelector('script[src$="shariff.js"]') ||
   document.querySelector('script[src$="shariff.min.js"]')
 const shariffPath = shariffScript ? shariffScript.src.split('/').slice(0, -1).join('/') : ''
 
-// Defaults may be overridden either by passing "options" to Shariff constructor
-// or by setting data attributes.
 const Defaults = {
   theme: 'color',
 
@@ -32,10 +24,10 @@ const Defaults = {
   langFallback: 'en',
 
   mailUrl: function () {
-    var shareUrl = url.parse(this.getURL(), true)
-    shareUrl.query.view = 'mail'
+    var shareUrl = new URL(this.getURL())
+    shareUrl.searchParams.set('view', 'mail')
     delete shareUrl.search
-    return url.format(shareUrl)
+    return shareUrl
   },
 
   mailBody: function () {
@@ -65,26 +57,25 @@ const Defaults = {
 
   facebooklikeOptions: { width: 450, layout: 'standard', action: 'like', size: 'large', show_faces: true, share: true, appId: null },
 
-  title: global.document.title,
+  title: document.title,
 
   twitterVia: null,
 
   // build URI from rel="canonical" or document.location
-  url: function () {
-    var url = global.document.location.href
-    var canonical =
-      $('link[rel=canonical]').attr('href') || this.getMeta('og:url') || ''
+  url: function() {
+    var url = document.location.href
+    var canonical = document.querySelector('link[rel=canonical]')?.href || this.getMeta('og:url') || ''
 
     if (canonical.length > 0) {
       if (canonical.indexOf('http') < 0) {
         if (canonical.indexOf('//') !== 0) {
           canonical =
-            global.document.location.protocol +
+            document.location.protocol +
             '//' +
-            global.document.location.host +
+            document.location.host +
             canonical
         } else {
-          canonical = global.document.location.protocol + canonical
+          canonical = document.location.protocol + canonical
         }
       }
       url = canonical
@@ -94,15 +85,22 @@ const Defaults = {
   },
 }
 
-class Shariff {
+export class Shariff {
   constructor(element, options) {
     // the DOM element that will contain the buttons
     this.element = element
 
-    // Ensure elemnt is empty
-    $(element).empty()
-
-    this.options = $.extend({}, Defaults, options, $(element).data())
+    this.options = Object.assign({}, Defaults);
+    if (options) {
+      for (let option in options) {
+        this.options[option] = options[option];
+      }
+    }
+    if (element.dataset) {
+      for (let option in element.dataset) {
+        this.options[option] = element.dataset[option];
+      }
+    }
 
     // filter available services to those that are enabled and initialize them
     this.services = Object.keys(services)
@@ -127,10 +125,6 @@ class Shariff {
     return this.options.services.indexOf(serviceName) > -1
   }
 
-  $socialshareElement() {
-    return $(this.element)
-  }
-
   getLocalized(data, key) {
     if (typeof data[key] === 'object') {
       if (typeof data[key][this.options.lang] === 'undefined') {
@@ -146,9 +140,7 @@ class Shariff {
 
   // returns content of <meta name="" content=""> tags or '' if empty/non existant
   getMeta(name) {
-    var metaContent = $(`meta[name="${name}"],[property="${name}"]`).attr(
-      'content',
-    )
+    var metaContent = document.querySelector(`meta[name="${name}"],[property="${name}"]`)?.getAttribute('content');
     return metaContent || ''
   }
 
@@ -178,7 +170,9 @@ class Shariff {
 
   getTitle() {
     let title = this.getOption('title')
-    if ($(this.element).data()['title']) return title
+    if (this.element.dataset['title']) {
+      return title
+    }
     title = title || this.getMeta('DC.title')
     let creator = this.getMeta('DC.creator')
     return title && creator ? `${title} - ${creator}` : title
@@ -190,10 +184,14 @@ class Shariff {
 
   // returns shareCounts of document
   getShares(callback) {
-    var baseUrl = url.parse(this.options.backendUrl, true)
-    baseUrl.query.url = this.getURL()
-    delete baseUrl.search
-    return $.getJSON(url.format(baseUrl), callback)
+    var backend = new URL(this.options.backendUrl, document.location);
+    backend.searchParams.set('url', this.getURL());
+    let myRequest = new Request(backend);
+    fetch(myRequest)
+      .then(response => response.json())
+      .then((json) => {
+        callback(json);
+      });
   }
 
   getDialogsMediaUrl() {
@@ -205,14 +203,20 @@ class Shariff {
   }
 
   getFacebooklikeOptions() {
+    if (typeof this.options.facebooklikeOptions == 'string') {
+      return JSON.parse(this.options.facebooklikeOptions)
+    }
     return this.options.facebooklikeOptions
   }
 
   // add value of shares for each service
   _updateCounts(data, status, xhr) {
-    if (!data) return
-    var fbValue = null
-    $.each(data, (serviceName, value) => {
+    if (!data) {
+      return;
+    }
+    var fbValue = null;
+
+    for (var [serviceName, value] of Object.entries(data)) {
       if (value >= 1000) {
         value = Math.round(value / 1000) + 'k'
       }
@@ -224,135 +228,135 @@ class Shariff {
         }
       }
       if (this.isEnabledService(serviceName) && doAppend) {
-        $(this.element)
-          .find(`.${serviceName} a`)
-          .append($('<span/>').addClass('share_count').text(value))
+        let counter = document.createElement('span');
+        counter.classList.add('share_count');
+        counter.innerHTML = fbValue;
+        this.element
+          .querySelector(`.${serviceName} a`)
+          .append(counter);
       }
-    })
-    if (this.isEnabledService('facebooklike') && (fbValue !== null) && this.options.facebookCountBtn !== 'share') {
-      $(this.element)
-        .find(`.facebooklike a`)
-        .append($('<span/>').addClass('share_count').text(fbValue))
+      if (this.isEnabledService('facebooklike') && (fbValue !== null) && this.options.facebookCountBtn !== 'share') {
+        let counter = document.createElement('span');
+        counter.classList.add('share_count');
+        counter.innerHTML = value;
+        this.element
+          .querySelector(`.facebooklike a`)
+          .append(counter);
+      }
     }
   }
 
   // add html for button-container
   _addButtonList() {
-    var $buttonList = $('<ul/>').addClass(
-      [
-        'theme-' + this.options.theme,
-        'orientation-' + this.options.orientation,
-        'button-style-' + this.options.buttonStyle,
-        'shariff-col-' + this.options.services.length,
-      ].join(' '),
-    )
-
-    var dialogServices = []
-
+    var buttonList = document.createElement('ul');
+    buttonList.classList.add(
+      'theme-' + this.options.theme,
+      'orientation-' + this.options.orientation,
+      'button-style-' + this.options.buttonStyle,
+      'shariff-col-' + this.options.services.length
+    );
+    var dialogServices = [];
     // add html for service-links
-    this.services.forEach((service) => {
-      var $li = $('<li/>').addClass(`shariff-button ${service.name}`)
-      var $shareLink = $('<a/>').attr('href', service.shareUrl)
+    this.services.forEach(service => {
+      var li = document.createElement('li');
+      li.classList.add("shariff-button", service.name);
+      
+      var shareLink = document.createElement('a');
+      shareLink.href = service.shareUrl;
 
       if (this.options.buttonStyle === 'standard') {
-        var $shareText = $('<span/>')
-          .addClass('share_text')
-          .text(this.getLocalized(service, 'shareText'))
-        $shareLink.append($shareText)
+        var shareText = document.createElement('span');
+        shareText.classList.add('share_text');
+        shareText.innerHTML = this.getLocalized(service, 'shareText');
+        shareLink.append(shareText);
       }
 
       if (
         typeof service.faPrefix !== 'undefined' &&
         typeof service.faName !== 'undefined'
       ) {
-        $shareLink.prepend(
-          $('<span/>').addClass(`${service.faPrefix} ${service.faName}`),
-        )
+        var prefix = document.createElement('span');
+        // faPrefix can contain multiple classes, which we have to add one by one (e.g. twitter)
+        service.faPrefix.split(" ").forEach((element) => prefix.classList.add(element));
+        prefix.classList.add(service.faName);
+        shareLink.prepend(prefix);
       }
 
       if (service.shareUrl.match(/javascript:/) && typeof service.dialogHtml !== 'undefined') {
-        $shareLink.attr('data-dlg-idx', dialogServices.length)
+        shareLink.dataset['dlg_idx'] = dialogServices.length;
         dialogServices[dialogServices.length] = service
       }
 
       if (service.popup) {
-        $shareLink.attr('data-rel', 'popup')
+        shareLink.dataset['rel'] = 'popup';
         if (service.name !== 'info') {
-          $shareLink.attr('rel', 'nofollow')
+          shareLink.setAttribute('rel', 'nofollow');
         }
       } else if (service.blank) {
-        $shareLink.attr('target', '_blank')
+        shareLink.setAttribute('target', '_blank');
         if (service.name === 'info') {
-          $shareLink.attr('rel', 'noopener noreferrer')
+          shareLink.setAttribute('rel', 'noopener noreferrer');
         } else {
-          $shareLink.attr('rel', 'nofollow noopener noreferrer')
+          shareLink.setAttribute('rel', 'nofollow noopener noreferrer');
         }
       } else if (service.name !== 'info') {
-        $shareLink.attr('rel', 'nofollow')
+        shareLink.setAttribute('rel', 'nofollow');
       }
-      $shareLink.attr('title', this.getLocalized(service, 'title'))
+      shareLink.setAttribute('title', this.getLocalized(service, 'title'));
 
       // add attributes for screen readers
-      $shareLink.attr('role', 'button')
-      $shareLink.attr('aria-label', this.getLocalized(service, 'title'))
+      shareLink.setAttribute('role', 'button');
+      shareLink.setAttribute('aria-label', this.getLocalized(service, 'title'));
 
-      $li.append($shareLink)
+      li.append(shareLink);
 
-      // trigger a custom event when share button is clicked
-      $li.on('click', 'li', function (e) {
-        $li.trigger('shariff-share', service)
-      })
-
-      $buttonList.append($li)
+      buttonList.append(li);
     })
 
     // event delegation
-    $buttonList.on('click', '[data-rel="popup"]', function (e) {
-      e.preventDefault()
+    buttonList.addEventListener('click', function(e) {
+      let target = e.target.closest('[data-rel="popup"]');      
+      if (target !== null) {
+        e.preventDefault();
+      
+        var url = target.href;
 
-      var url = $(this).attr('href')
+        // if a twitter widget is embedded on current site twitter's widget.js
+        // will open a popup so we should not open a second one.
+        if (url.match(/twitter\.com\/intent\/(\w+)/)) {
+          var w = window
+          if (w.__twttr && w.__twttr.widgets && w.__twttr.widgets.loaded) {
+            return
+          }
+        }
 
-      // if a twitter widget is embedded on current site twitter's widget.js
-      // will open a popup so we should not open a second one.
-      if (url.match(/twitter\.com\/intent\/(\w+)/)) {
-        var w = global.window
-        if (w.__twttr && w.__twttr.widgets && w.__twttr.widgets.loaded) {
+        var dialogIdx = target.dataset['dlg_idx'];
+
+        if (dialogIdx && !isNaN(dialogIdx) && typeof dialogServices[dialogIdx].dialogHtml !== 'undefined') {
+          var title = target.getAttribute('title');
+          var headInnerHTML = '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+            '<title>' + title + '</title>'
+          if (typeof dialogServices[dialogIdx].dialogCssUrl !== 'undefined' && dialogServices[dialogIdx].dialogCssUrl) {
+            headInnerHTML += '<link rel="stylesheet" href="' + dialogServices[dialogIdx].dialogCssUrl + '">'
+          }
+          var newWin = window.open('', '_blank', 'width=600,height=460')
+          newWin.document.head.innerHTML = headInnerHTML
+          newWin.document.body.innerHTML = dialogServices[dialogIdx].dialogHtml
           return
         }
+
+        window.open(url, '_blank', 'width=600,height=460')
       }
-
-      var dialogIdx = $(this).attr('data-dlg-idx')
-
-      if (dialogIdx && !isNaN(dialogIdx) && typeof dialogServices[dialogIdx].dialogHtml !== 'undefined') {
-        var title = $(this).attr('title')
-        var headInnerHTML = '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
-          '<title>' + title + '</title>'
-        if (typeof dialogServices[dialogIdx].dialogCssUrl !== 'undefined' && dialogServices[dialogIdx].dialogCssUrl) {
-          headInnerHTML += '<link rel="stylesheet" href="' + dialogServices[dialogIdx].dialogCssUrl + '">'
-        }
-        var newWin = global.window.open('', '_blank', 'width=600,height=460')
-        newWin.document.head.innerHTML = headInnerHTML
-        newWin.document.body.innerHTML = dialogServices[dialogIdx].dialogHtml
-        return
-      }
-
-      global.window.open(url, '_blank', 'width=600,height=460')
-    })
-
-    this.$socialshareElement().append($buttonList)
+    });
+    
+    this.element.append(buttonList);
   }
 }
 
-module.exports = Shariff
+document.querySelectorAll('.shariff').forEach(function (currentValue, currentIndex, listObj) {
+  if (!currentValue.hasOwnProperty('shariff')) {
+    currentValue.shariff = new Shariff(currentValue, {theme: 'abc'});
+  }
+});
 
-// export Shariff class to global (for non-Node users)
-global.Shariff = Shariff
-
-$(function () {
-  // initialize .shariff elements
-  $('.shariff').each(function () {
-    if (!this.hasOwnProperty('shariff')) {
-      this.shariff = new Shariff(this)
-    }
-  })
-})
+export default Shariff

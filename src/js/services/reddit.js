@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = encodeURIComponent(shariff.getURL())
   var title = encodeURIComponent(shariff.getTitle())
 

@@ -1,7 +1,5 @@
 'use strict'
 
-var url = require('url')
-
 // abbreviate at last blank before length and add "\u2026" (horizontal ellipsis)
 var abbreviateText = function (text, length) {
   var div = document.createElement('div')
@@ -20,23 +18,20 @@ var abbreviateText = function (text, length) {
   return abbreviated
 }
 
-module.exports = function (shariff) {
-  var shareUrl = url.parse('https://twitter.com/intent/tweet', true)
+export default function data(shariff) {
+  var shareUrl = new URL('https://twitter.com/intent/tweet');
 
   var title = shariff.getTitle()
 
-  shareUrl.query.url = shariff.getURL()
+  shareUrl.searchParams.set('url', shariff.getURL());
   if (shariff.options.twitterVia !== null) {
-    shareUrl.query.via = shariff.options.twitterVia
+    shareUrl.searchParams.set('via', shariff.options.twitterVia);
   }
   // From Twitters documentation (May 2021):
   // The length of your passed Tweet text should not exceed 280 characters
   // when combined with any passed hashtags, via, or url parameters.
-  var remainingTextLength =
-    280 - (shareUrl.query.via || '').length - (shareUrl.query.url || '').length
-  shareUrl.query.text = abbreviateText(title, remainingTextLength)
-
-  delete shareUrl.search
+  var remainingTextLength = (280 - (shareUrl.searchParams.via || '').length - (shareUrl.searchParams.url || '').length)
+  shareUrl.searchParams.set('text', abbreviateText(title, remainingTextLength));
 
   return {
     popup: true,
@@ -80,6 +75,6 @@ module.exports = function (shariff) {
       zh: '在X上分享',
     },
     // shareUrl: 'https://twitter.com/intent/tweet?text='+ shariff.getShareText() + '&url=' + url
-    shareUrl: url.format(shareUrl) + shariff.getReferrerTrack(),
+    shareUrl: shareUrl + shariff.getReferrerTrack()
   }
 }

@@ -1,5 +1,5 @@
-const assert = require('assert')
-const Shariff = require('..')
+import { strict as assert } from 'assert';
+import Shariff from '../src/js/shariff.js';
 
 describe('Shariff', () => {
   let div = null

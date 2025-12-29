@@ -65,3 +65,14 @@ typings/
 # macOS stuff
 .DS_Store
 
+# demo files
+demo/*.ttf
+demo/*.woff2
+demo/app.css
+demo/facebooklike_dlg.css
+demo/shariff.complete.css
+demo/shariff.complete.js
+demo/shariff.min.css
+
+# test files
+test/shariff.complete.js

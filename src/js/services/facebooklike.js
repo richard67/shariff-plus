@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = shariff.getURL()
   var dialogTitle = shariff.getTitle()
   var shariffLang = shariff.getOption('lang')

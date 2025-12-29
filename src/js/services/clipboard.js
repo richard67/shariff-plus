@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url =
     'javascript:' +
     'var d = document.createElement("input");' +

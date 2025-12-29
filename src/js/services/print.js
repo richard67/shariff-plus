@@ -1,7 +1,7 @@
 /* jshint scripturl:true */
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = 'javascript:window.print();'
 
   return {
