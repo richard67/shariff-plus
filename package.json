@@ -53,13 +53,13 @@
   },
   "homepage": "https://www.richard-fath.de/en/software/shariff-plus.html",
   "devDependencies": {
-    "eslint": "^9.25.1",
+    "eslint": "^9.39.2",
     "jsdom": "^17.0.0",
     "jsdom-global": "^3.0.2",
     "less": "^3.13.1",
-    "lightningcss-cli": "^1.29.3",
-    "mocha": "^11.1.0",
-    "rollup": "^4.40.0"
+    "lightningcss-cli": "^1.30.2",
+    "mocha": "^11.7.5",
+    "rollup": "^4.54.0"
   },
   "keywords": [
     "heise",
