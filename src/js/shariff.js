@@ -53,7 +53,7 @@ const Defaults = {
 
   facebookCountBtn: 'like',
 
-  facebooklikeCss: 'facebooklike_dlg.css',
+  facebooklikeCss: 'facebooklike_dlg.min.css',
 
   facebooklikeOptions: { width: 450, layout: 'standard', action: 'like', size: 'large', show_faces: true, share: true, appId: null },
 
