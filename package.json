@@ -5,9 +5,9 @@
   "main": "src/js/shariff.js",
   "type": "module",
   "scripts": {
-    "dev": "npm run -s build && npm run -s copy_demo && ./node_modules/sass/sass.js demo/app.scss demo/app.css && npx http-server -p 3000 demo/",
+    "dev": "npm run -s build && npm run -s copy_demo && ./node_modules/sass/sass.js --no-source-map demo/app.scss demo/app.css && npx http-server -p 3000 demo/",
     "test": "eslint src && mocha -r jsdom-global/register",
-    "compile_less": "./node_modules/sass/sass.js --load-path=. src/style/shariff-complete.scss dist/shariff.complete.css && ./node_modules/sass/sass.js src/style/shariff.scss dist/shariff.min.css && ./node_modules/sass/sass.js src/style/dialogs/facebooklike_dlg.scss dist/facebooklike_dlg.css",
+    "compile_less": "./node_modules/sass/sass.js --load-path=. --no-source-map src/style/shariff-complete.scss dist/shariff.complete.css && ./node_modules/sass/sass.js --no-source-map src/style/shariff.scss dist/shariff.min.css && ./node_modules/sass/sass.js --no-source-map src/style/dialogs/facebooklike_dlg.scss dist/facebooklike_dlg.css",
     "compile_js": "rollup -c rollup.config.js",
     "copy_fonts": "cp node_modules/@fortawesome/fontawesome-free/webfonts/*.* dist/",
     "copy_demo": "rm -f demo/*.css && rm -f demo/*.js && rm -f demo/*.ttf && rm -f demo/*.woff2 && cp dist/*.* demo/",
