@@ -1,9 +1,10 @@
+@use "sass:color";
 .shariff {
     .pinterest {
         a {
             background-color: #bd081c;
             &:hover {
-                background-color: lighten(#bd081c, 5%);
+                background-color: color.adjust(#bd081c, $lightness: 5%);
             }
         }
         .fa-pinterest-p {

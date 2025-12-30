@@ -5,9 +5,9 @@
   "main": "src/js/shariff.js",
   "type": "module",
   "scripts": {
-    "dev": "npm run -s build && npm run -s copy_demo && lessc demo/app.less demo/app.css && npx http-server -p 3000 demo/",
+    "dev": "npm run -s build && npm run -s copy_demo && ./node_modules/sass/sass.js demo/app.scss demo/app.css && npx http-server -p 3000 demo/",
     "test": "eslint src && mocha -r jsdom-global/register",
-    "compile_less": "lessc --modify-var='fa-font-path=.' src/style/shariff-complete.less dist/shariff.complete.css && lessc src/style/shariff.less dist/shariff.min.css && lessc src/style/dialogs/facebooklike_dlg.less dist/facebooklike_dlg.css",
+    "compile_less": "./node_modules/sass/sass.js --load-path=. src/style/shariff-complete.scss dist/shariff.complete.css && ./node_modules/sass/sass.js src/style/shariff.scss dist/shariff.min.css && ./node_modules/sass/sass.js src/style/dialogs/facebooklike_dlg.scss dist/facebooklike_dlg.css",
     "compile_js": "rollup -c rollup.config.js",
     "copy_fonts": "cp node_modules/@fortawesome/fontawesome-free/webfonts/*.* dist/",
     "copy_demo": "rm -f demo/*.css && rm -f demo/*.js && rm -f demo/*.ttf && rm -f demo/*.woff2 && cp dist/*.* demo/",
@@ -60,7 +60,8 @@
     "less": "^4.5.1",
     "lightningcss-cli": "^1.30.2",
     "mocha": "^11.7.5",
-    "rollup": "^4.54.0"
+    "rollup": "^4.54.0",
+    "sass": "^1.97.1"
   },
   "keywords": [
     "heise",
