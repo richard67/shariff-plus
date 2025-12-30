@@ -33,7 +33,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'buffer',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-buffer',
     title: {
       bg: 'Сподели в buffer',

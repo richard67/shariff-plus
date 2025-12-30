@@ -35,7 +35,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'whatsapp',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-whatsapp',
     title: {
       bg: 'Сподели в Whatsapp',

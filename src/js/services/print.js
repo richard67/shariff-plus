@@ -6,7 +6,7 @@ export default function data(shariff) {
 
   return {
     name: 'print',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-print',
     popup: false,
     shareText: {

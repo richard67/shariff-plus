@@ -35,7 +35,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'qzone',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-qq',
     title: {
       bg: 'Сподели в Qzone',

@@ -33,7 +33,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'tumblr',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-tumblr',
     title: {
       bg: 'Сподели в tumblr',

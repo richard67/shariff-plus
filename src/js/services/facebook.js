@@ -32,7 +32,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'facebook',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-facebook-f',
     title: {
       bg: 'Сподели във Facebook',

@@ -35,7 +35,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'threema',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-lock',
     title: {
       bg: 'Сподели в Threema',

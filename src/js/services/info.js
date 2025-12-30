@@ -6,7 +6,7 @@ export default function data(shariff) {
     popup: shariff.getInfoDisplayPopup(),
     shareText: 'Info',
     name: 'info',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-info',
     title: {
       bg: 'Повече информация',

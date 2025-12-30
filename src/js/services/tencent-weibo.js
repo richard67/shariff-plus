@@ -35,7 +35,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'tencent-weibo',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-tencent-weibo',
     title: {
       bg: 'Сподели в tencent weibo',

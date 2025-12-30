@@ -33,7 +33,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'telegram',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-telegram',
     title: {
       bg: 'Сподели в Telegram',

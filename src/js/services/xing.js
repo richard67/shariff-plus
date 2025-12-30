@@ -32,7 +32,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'xing',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-xing',
     title: {
       bg: 'Сподели в XING',

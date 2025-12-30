@@ -42,7 +42,7 @@ export default function data(shariff) {
       zh: '',
     },
     name: 'clipboard',
-    faPrefix: 'far',
+    faPrefix: 'far fa-regular',
     faName: 'fa-copy',
     title: {
       bg: '',
