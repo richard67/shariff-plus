@@ -98,7 +98,11 @@ export class Shariff {
     }
     if (element.dataset) {
       for (let option in element.dataset) {
-        this.options[option] = element.dataset[option];
+        if (option === 'facebooklikeOptions' || option === 'services') {
+          this.options[option] = JSON.parse(element.dataset[option]);
+        } else {
+          this.options[option] = element.dataset[option];
+        }
       }
     }
 
@@ -203,9 +207,6 @@ export class Shariff {
   }
 
   getFacebooklikeOptions() {
-    if (typeof this.options.facebooklikeOptions == 'string') {
-      return JSON.parse(this.options.facebooklikeOptions)
-    }
     return this.options.facebooklikeOptions
   }
 
