@@ -1,8 +1,8 @@
 import * as services from './services/index.js';
 
 const shariffScript = document.currentScript ||
-  document.querySelector('script[src$="shariff.js"]') ||
-  document.querySelector('script[src$="shariff.min.js"]')
+  document.querySelector('script[src$="shariff.complete.js"]') ||
+  document.querySelector('script[src$="shariff.complete.min.js"]')
 const shariffPath = shariffScript ? shariffScript.src.split('/').slice(0, -1).join('/') : ''
 
 const Defaults = {
@@ -53,7 +53,7 @@ const Defaults = {
 
   facebookCountBtn: 'like',
 
-  facebooklikeCss: 'facebooklike_dlg.css',
+  facebooklikeCss: 'facebooklike_dlg.min.css',
 
   facebooklikeOptions: { width: 450, layout: 'standard', action: 'like', size: 'large', show_faces: true, share: true, appId: null },
 
@@ -98,7 +98,11 @@ export class Shariff {
     }
     if (element.dataset) {
       for (let option in element.dataset) {
-        this.options[option] = element.dataset[option];
+        if (option === 'facebooklikeOptions' || option === 'services') {
+          this.options[option] = JSON.parse(element.dataset[option]);
+        } else {
+          this.options[option] = element.dataset[option];
+        }
       }
     }
 
@@ -203,9 +207,6 @@ export class Shariff {
   }
 
   getFacebooklikeOptions() {
-    if (typeof this.options.facebooklikeOptions == 'string') {
-      return JSON.parse(this.options.facebooklikeOptions)
-    }
     return this.options.facebooklikeOptions
   }
 
@@ -230,19 +231,19 @@ export class Shariff {
       if (this.isEnabledService(serviceName) && doAppend) {
         let counter = document.createElement('span');
         counter.classList.add('share_count');
-        counter.innerHTML = fbValue;
+        counter.innerHTML = value;
         this.element
           .querySelector(`.${serviceName} a`)
           .append(counter);
       }
-      if (this.isEnabledService('facebooklike') && (fbValue !== null) && this.options.facebookCountBtn !== 'share') {
-        let counter = document.createElement('span');
-        counter.classList.add('share_count');
-        counter.innerHTML = value;
-        this.element
-          .querySelector(`.facebooklike a`)
-          .append(counter);
-      }
+    }
+    if (this.isEnabledService('facebooklike') && (fbValue !== null) && this.options.facebookCountBtn !== 'share') {
+      let counter = document.createElement('span');
+      counter.classList.add('share_count');
+      counter.innerHTML = fbValue;
+      this.element
+        .querySelector(`.facebooklike a`)
+        .append(counter);
     }
   }
 
