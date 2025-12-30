@@ -1,8 +1,8 @@
 import * as services from './services/index.js';
 
 const shariffScript = document.currentScript ||
-  document.querySelector('script[src$="shariff.js"]') ||
-  document.querySelector('script[src$="shariff.min.js"]')
+  document.querySelector('script[src$="shariff.complete.js"]') ||
+  document.querySelector('script[src$="shariff.complete.min.js"]')
 const shariffPath = shariffScript ? shariffScript.src.split('/').slice(0, -1).join('/') : ''
 
 const Defaults = {
