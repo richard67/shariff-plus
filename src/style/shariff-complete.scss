@@ -1,8 +1,19 @@
-// Font-Awesome
-@use "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@use "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
-@use "node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
-@use "node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+// customize Font Awesome variables
+@use 'node_modules/@fortawesome/fontawesome-free/scss/variables' with (
+  // customizing $font-path
+  $font-path: '.',
+);
+
+// load Font Awesome core
+@use 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+
+// load and make available Font Awesome helpers (mixins, functions, and variables)
+@use 'node_modules/@fortawesome/fontawesome-free/scss/fa' as fa;
+
+// load individual Font Awesome styles
+@use 'node_modules/@fortawesome/fontawesome-free/scss/brands' as fa-brands;
+@use 'node_modules/@fortawesome/fontawesome-free/scss/regular' as fa-regular;
+@use 'node_modules/@fortawesome/fontawesome-free/scss/solid' as fa-solid;
 
 // Shariff
 @use "shariff-layout";
