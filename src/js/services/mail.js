@@ -23,7 +23,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'mail',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-envelope',
     title: {
       bg: 'Изпрати по имейл',

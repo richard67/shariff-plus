@@ -38,7 +38,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'reddit',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-reddit-alien',
     title: {
       bg: 'Сподели в Reddit',

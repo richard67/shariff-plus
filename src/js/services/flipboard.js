@@ -7,7 +7,7 @@ export default function data(shariff) {
     popup: true,
     shareText: 'flip it',
     name: 'flipboard',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-flipboard',
     title: {
       bg: 'Сподели в Flipboard',

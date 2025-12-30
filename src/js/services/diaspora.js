@@ -35,7 +35,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'diaspora',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-asterisk',
     title: {
       bg: 'Сподели в diaspora*',

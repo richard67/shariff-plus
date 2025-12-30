@@ -20,7 +20,7 @@ export default function data(shariff) {
     popup: true,
     shareText: 'pin it',
     name: 'pinterest',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-pinterest-p',
     title: {
       bg: 'Сподели в Pinterest',

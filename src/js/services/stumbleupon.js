@@ -38,7 +38,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'stumbleupon',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-stumbleupon',
     title: {
       bg: 'Сподели в Stumbleupon',

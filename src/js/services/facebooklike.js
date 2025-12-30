@@ -110,7 +110,7 @@ export default function data(shariff) {
       zh: '赞',
     },
     name: 'facebooklike',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-thumbs-up',
     title: {
       bg: 'Харесвам/Вече не харесвам във Facebook',

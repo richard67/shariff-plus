@@ -33,7 +33,7 @@ export default function data(shariff) {
       zh: '分享',
     },
     name: 'fediverse',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-mastodon',
     title: {
       bg: 'Сподели в Fediverse',
