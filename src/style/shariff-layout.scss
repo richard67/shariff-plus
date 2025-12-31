@@ -3,7 +3,7 @@
         min-width: 110px;
         max-width: 160px;
 
-        .share_text {
+        .share-text {
             text-indent: 0;
             display: inline;
         }
@@ -43,8 +43,8 @@
             box-sizing: border-box;
         }
 
-        .share_text,
-        .share_count {
+        .share-text,
+        .share-count {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 12px;
             vertical-align: middle;
@@ -63,7 +63,7 @@
             vertical-align: middle;
         }
 
-        .share_count {
+        .share-count {
             padding: 0 8px;
             height: 33px;
             position: absolute;
@@ -101,13 +101,13 @@
                 margin-right: 0;
             }
 
-            .share_text {
+            .share-text {
                 display: block;
                 text-indent: -9999px;
                 padding-left: 3px;
             }
 
-            .share_count {
+            .share-count {
                 display: none;
             }
         }
@@ -121,7 +121,7 @@
                 background-color: #b0b0b0;
             }
 
-            .share_count {
+            .share-count {
                 background-color: #ccc;
                 color: #333;
             }
@@ -142,7 +142,7 @@
                 }
             }
 
-            .share_count {
+            .share-count {
                 background-color: #fff;
                 color: #999;
             }
@@ -172,7 +172,7 @@
 
         &.button-style-standard, &.button-style-icon-count {
             li {
-                .share_count {
+                .share-count {
                     width: 24px;
                     text-align: right;
                 }
@@ -193,7 +193,7 @@
             li {
                 min-width: 80px;
 
-                .share_count {
+                .share-count {
                     display: block;
                 }
             }
@@ -257,12 +257,12 @@
                 line-height: 30px;
             }
 
-            .share_text,
-            .share_count {
+            .share-text,
+            .share-count {
                 line-height: 30px;
             }
 
-            .share_count {
+            .share-count {
                 height: 28px;
             }
         }
