@@ -2,14 +2,17 @@
     .pocket {
         a {
             background-color: #ef4056;
+
             &:hover {
                 background-color: #ff5066;
             }
         }
+
         .fa-get-pocket {
             font-size: 22px;
         }
     }
+
     .theme-white {
         .pocket a {
             color: #ef4056;
@@ -17,7 +20,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (width >= 600px) {
     .shariff {
         .pocket .fa-get-pocket {
             font-size: 19px;

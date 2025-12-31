@@ -2,6 +2,7 @@
     li {
         min-width: 110px;
         max-width: 160px;
+
         .share_text {
             text-indent: 0;
             display: inline;
@@ -15,20 +16,24 @@
         content: " ";
         display: table;
     }
+
     &::after {
         clear: both;
     }
+
     ul {
         padding: 0;
         margin: 0;
         list-style: none;
     }
+
     li {
         height: 35px;
         box-sizing: border-box;
         overflow: hidden;
         padding: 0;
         border: none;
+
         a {
             color: #fff;
             position: relative;
@@ -37,6 +42,7 @@
             text-decoration: none;
             box-sizing: border-box;
         }
+
         .share_text,
         .share_count {
             font-family: Arial, Helvetica, sans-serif;
@@ -44,6 +50,7 @@
             vertical-align: middle;
             line-height: 35px;
         }
+
         .fab,
         .far,
         .fas,
@@ -55,6 +62,7 @@
             text-align: center;
             vertical-align: middle;
         }
+
         .share_count {
             padding: 0 8px;
             height: 33px;
@@ -68,30 +76,37 @@
     .orientation-horizontal {
         /* autoprefixer: off */
         display: -webkit-box;
+
         li {
-            -webkit-box-flex: 1;
+            flex-grow: 1;
         }
+
         .info {
-            -webkit-box-flex: 0;
+            flex-grow: 0;
         }
     }
+
     .orientation-horizontal {
         display: flex;
         flex-wrap: wrap;
+
         li {
             float: left;
             flex: none;
             width: 35px;
             margin-right: 3%;
             margin-bottom: 10px;
+
             &:last-child {
                 margin-right: 0;
             }
+
             .share_text {
                 display: block;
                 text-indent: -9999px;
                 padding-left: 3px;
             }
+
             .share_count {
                 display: none;
             }
@@ -105,6 +120,7 @@
             a {
                 background-color: #b0b0b0;
             }
+
             .share_count {
                 background-color: #ccc;
                 color: #333;
@@ -117,12 +133,15 @@
     .theme-white {
         .shariff-button {
             border: 1px solid #ddd;
+
             a {
                 background-color: #fff;
+
                 &:hover {
                     background-color: #eee;
                 }
             }
+
             .share_count {
                 background-color: #fff;
                 color: #999;
@@ -136,17 +155,21 @@
         &.button-style-icon {
             min-width: 35px;
         }
+
         &.button-style-icon-count {
             min-width: 80px;
         }
+
         &.button-style-standard {
             min-width: 110px;
         }
+
         li {
             display: block;
             width: 100%;
             margin: 5px 0;
         }
+
         &.button-style-standard, &.button-style-icon-count {
             li {
                 .share_count {
@@ -160,28 +183,33 @@
 
 // ---------------  adjustments for small devices
 
-@media only screen and (min-width: 360px) {
+@media only screen and (width >= 360px) {
     .shariff .orientation-horizontal {
         li {
             margin-right: 1.8%;
         }
+
         &.button-style-standard, &.button-style-icon-count {
             li {
                 min-width: 80px;
+
                 .share_count {
                     display: block;
                 }
             }
         }
+
         &.button-style-standard {
             li {
                 width: auto;
                 flex: 1 0 auto;
             }
         }
+
         &.button-style-standard.shariff-col-1, &.button-style-standard.shariff-col-2 {
-            @include display-share-text();
+            @include display-share-text;
         }
+
         &.button-style-standard.shariff-col-5, &.button-style-standard.shariff-col-6 {
             li {
                 flex: none;
@@ -190,15 +218,16 @@
     }
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (width >= 640px) {
     .shariff .orientation-horizontal.button-style-standard.shariff-col-3 {
-        @include display-share-text();
+        @include display-share-text;
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (width >= 768px) {
     .shariff .orientation-horizontal.button-style-standard {
-        @include display-share-text();
+        @include display-share-text;
+
         &.shariff-col-5, &.shariff-col-6 {
             li {
                 flex: 1 0 auto;
@@ -209,13 +238,15 @@
 
 // --------------- desktop layout
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (width >= 1024px) {
     .shariff {
         li {
             height: 30px;
+
             a {
                 height: 30px;
             }
+
             .fab,
             .far,
             .fas,
@@ -225,10 +256,12 @@
                 width: 30px;
                 line-height: 30px;
             }
+
             .share_text,
             .share_count {
                 line-height: 30px;
             }
+
             .share_count {
                 height: 28px;
             }

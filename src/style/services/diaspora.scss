@@ -2,14 +2,17 @@
     .diaspora {
         a {
             background-color: #999;
+
             &:hover {
                 background-color: #b3b3b3;
             }
         }
+
         .fa-times-circle {
             font-size: 17px;
         }
     }
+
     .theme-white {
         .diaspora a {
             color: #999;
@@ -17,7 +20,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (width >= 600px) {
     .shariff {
         .diaspora .fa-times-circle {
             font-size: 16px;

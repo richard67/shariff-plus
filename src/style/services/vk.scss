@@ -2,18 +2,22 @@
     .vk {
         a {
             background-color: #5d7fa4;
+
             &:hover {
                 background-color: #678eb4;
             }
         }
+
         .fa-vk {
             font-size: 22px;
         }
+
         .share_count {
             color: #55677d;
-            background-color: #FFFFFF;
+            background-color: #FFF;
         }
     }
+
     .theme-white {
         .vk a {
             color: #3b5998;
@@ -21,7 +25,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (width >= 600px) {
     .shariff {
         .vk .fa-vk {
             font-size: 19px;

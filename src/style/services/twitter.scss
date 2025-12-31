@@ -2,18 +2,22 @@
     .twitter {
         a {
             background-color: #000;
+
             &:hover {
                 background-color: #333;
             }
         }
+
         .fa-x-twitter {
             font-size: 28px;
         }
+
         .share_count {
             color: #fff;
             background-color: #595959;
         }
     }
+
     .theme-white {
         .twitter a {
             color: #000;
@@ -21,7 +25,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (width >= 600px) {
     .shariff {
         .twitter .fa-x-twitter {
             font-size: 24px;

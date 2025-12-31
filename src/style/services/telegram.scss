@@ -1,23 +1,26 @@
 .shariff {
     .telegram {
         a {
-            background-color: #0088cc;
+            background-color: #08c;
+
             &:hover {
                 background-color: #007dbb;
             }
         }
+
         .fa-telegram {
             font-size: 28px;
         }
     }
+
     .theme-white {
         .telegram a {
-            color: #0088cc;
+            color: #08c;
         }
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (width >= 600px) {
     .shariff {
         .telegram .fa-telegram {
             font-size: 22px;

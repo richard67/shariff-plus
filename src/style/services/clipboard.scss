@@ -2,14 +2,17 @@
     .clipboard {
         a {
             background-color: #1e418c;
+
             &:hover {
                 background-color: #2e519c;
             }
         }
+
         .fa-clipboard {
             font-size: 21px;
         }
     }
+
     .theme-white {
         .clipboard a {
             color: #999;
@@ -17,7 +20,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (width >= 600px) {
     .shariff {
         .clipboard .fa-clipboard {
             font-size: 18px;
