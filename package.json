@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run -s build && npm run -s copy_demo && node_modules/sass/sass.js --style=expanded --no-source-map demo/app.scss demo/app.css && npx http-server -p 3000 demo/",
-    "test": "eslint src && mocha -r jsdom-global/register",
+    "test": "eslint src && npm run -s lint_scss && mocha -r jsdom-global/register",
     "compile_css_exp": "node_modules/sass/sass.js --load-path=. --style=expanded --no-source-map src/style/shariff-complete.scss:dist/shariff.complete.css src/style/shariff.scss:dist/shariff.min.css",
     "compile_css_min": "node_modules/sass/sass.js --load-path=. --style=compressed --no-source-map src/style/shariff-complete.scss:dist/shariff.complete.min.css src/style/shariff.scss:dist/shariff.min.min.css",
     "compile_css_dlg_exp": "node_modules/sass/sass.js --style=expanded --no-source-map src/style/dialogs/facebooklike_dlg.scss dist/facebooklike_dlg.css",
@@ -15,6 +15,7 @@
     "compile_js": "rollup -c rollup.config.js",
     "copy_fonts": "cp node_modules/@fortawesome/fontawesome-free/webfonts/*.woff2 dist/",
     "copy_demo": "rm -f demo/*.css && rm -f demo/*.js && rm -f demo/*.woff2 && cp dist/*.* demo/",
+    "lint_scss": "stylelint src/style/*.scss src/style/**/*.scss demo/app.scss",
     "build": "rm -fr dist && mkdir dist && npm run -s compile_css && npm run -s compile_js && npm run -s copy_fonts",
     "build_zip": "7z a -tzip $BASE_NAME.zip ./dist/* && 7z a -ttar $BASE_NAME.tar ./dist/* && 7z a $BASE_NAME.tar.gz $BASE_NAME.tar"
   },
