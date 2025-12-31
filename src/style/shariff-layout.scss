@@ -73,18 +73,6 @@
     }
 
     // ------------- horizontal alignment (standard)
-    .orientation-horizontal {
-        /* autoprefixer: off */
-        display: -webkit-box;
-
-        li {
-            flex-grow: 1;
-        }
-
-        .info {
-            flex-grow: 0;
-        }
-    }
 
     .orientation-horizontal {
         display: flex;
