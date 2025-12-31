@@ -36,7 +36,7 @@ article {
             }
         }
 
-        #article_content {
+        #article-content {
             p {
                 margin: 0;
                 line-height: 1.4;
@@ -45,7 +45,7 @@ article {
     }
 
     &.wide {
-        #article_extras {
+        #article-extras {
             @media only screen and (width >= 600px) {
                 width: 30%;
                 min-width: 130px;
@@ -56,7 +56,7 @@ article {
             }
         }
 
-        #article_content {
+        #article-content {
             @media only screen and (width >= 600px) {
                 width: 70%;
                 float: left;
@@ -65,7 +65,7 @@ article {
     }
 
     &.wide-icon {
-        #article_extras {
+        #article-extras {
             width: 35px;
             float: left;
             padding-right: 30px;
@@ -73,7 +73,7 @@ article {
     }
 
     &.wide-icon-count {
-        #article_extras {
+        #article-extras {
             width: 80px;
             float: left;
             padding-right: 30px;
