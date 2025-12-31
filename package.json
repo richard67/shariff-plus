@@ -60,8 +60,6 @@
     "eslint": "^9.39.2",
     "jsdom": "^27.4.0",
     "jsdom-global": "^3.0.2",
-    "less": "^4.5.1",
-    "lightningcss-cli": "^1.30.2",
     "mocha": "^11.7.5",
     "rollup": "^4.54.0",
     "sass": "^1.97.1"
