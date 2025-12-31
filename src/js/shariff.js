@@ -230,7 +230,7 @@ export class Shariff {
       }
       if (this.isEnabledService(serviceName) && doAppend) {
         let counter = document.createElement('span');
-        counter.classList.add('share_count');
+        counter.classList.add('share-count');
         counter.innerHTML = value;
         this.element
           .querySelector(`.${serviceName} a`)
@@ -239,7 +239,7 @@ export class Shariff {
     }
     if (this.isEnabledService('facebooklike') && (fbValue !== null) && this.options.facebookCountBtn !== 'share') {
       let counter = document.createElement('span');
-      counter.classList.add('share_count');
+      counter.classList.add('share-count');
       counter.innerHTML = fbValue;
       this.element
         .querySelector(`.facebooklike a`)
@@ -267,7 +267,7 @@ export class Shariff {
 
       if (this.options.buttonStyle === 'standard') {
         var shareText = document.createElement('span');
-        shareText.classList.add('share_text');
+        shareText.classList.add('share-text');
         shareText.innerHTML = this.getLocalized(service, 'shareText');
         shareLink.append(shareText);
       }

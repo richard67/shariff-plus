@@ -1,0 +1,29 @@
+.shariff {
+    .weibo {
+        a {
+            background-color: #F56770;
+
+            &:hover {
+                background-color: #FA7F8A;
+            }
+        }
+
+        .fa-weibo {
+            font-size: 28px;
+        }
+    }
+
+    .theme-white {
+        .weibo a {
+            color: #F56770;
+        }
+    }
+}
+
+@media only screen and (width >= 600px) {
+    .shariff {
+        .weibo .fa-weibo {
+            font-size: 24px;
+        }
+    }
+}

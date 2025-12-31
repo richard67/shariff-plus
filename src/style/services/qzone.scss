@@ -1,0 +1,29 @@
+.shariff {
+    .qzone {
+        a {
+            background-color: #2B82D9;
+
+            &:hover {
+                background-color: #398FE6;
+            }
+        }
+
+        .fa-qq {
+            font-size: 28px;
+        }
+    }
+
+    .theme-white {
+        .qzone a {
+            color: #2B82D9;
+        }
+    }
+}
+
+@media only screen and (width >= 600px) {
+    .shariff {
+        .qzone .fa-qq {
+            font-size: 24px;
+        }
+    }
+}

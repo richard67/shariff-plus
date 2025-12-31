@@ -5,14 +5,18 @@
   "main": "src/js/shariff.js",
   "type": "module",
   "scripts": {
-    "dev": "npm run -s build && npm run -s copy_demo && lessc demo/app.less demo/app.css && npx http-server -p 3000 demo/",
-    "test": "eslint src && mocha -r jsdom-global/register",
-    "compile_less": "lessc --modify-var='fa-font-path=.' src/style/shariff-complete.less dist/shariff.complete.css && lessc src/style/shariff.less dist/shariff.min.css && lessc src/style/dialogs/facebooklike_dlg.less dist/facebooklike_dlg.css",
+    "dev": "npm run -s build && npm run -s copy_demo && node_modules/sass/sass.js --style=expanded --no-source-map demo/app.scss demo/app.css && npx http-server -p 3000 demo/",
+    "test": "eslint src && npm run -s lint_scss && mocha -r jsdom-global/register",
+    "compile_css_exp": "node_modules/sass/sass.js --load-path=. --style=expanded --no-source-map src/style/shariff-complete.scss:dist/shariff.complete.css src/style/shariff.scss:dist/shariff.min.css",
+    "compile_css_min": "node_modules/sass/sass.js --load-path=. --style=compressed --no-source-map src/style/shariff-complete.scss:dist/shariff.complete.min.css src/style/shariff.scss:dist/shariff.min.min.css",
+    "compile_css_dlg_exp": "node_modules/sass/sass.js --style=expanded --no-source-map src/style/dialogs/facebooklike_dlg.scss dist/facebooklike_dlg.css",
+    "compile_css_dlg_min": "node_modules/sass/sass.js --style=compressed --no-source-map src/style/dialogs/facebooklike_dlg.scss dist/facebooklike_dlg.min.css",
+    "compile_css": "npm run -s compile_css_exp && npm run -s compile_css_min && npm run -s compile_css_dlg_exp && npm run -s compile_css_dlg_min",
     "compile_js": "rollup -c rollup.config.js",
-    "copy_fonts": "cp node_modules/@fortawesome/fontawesome-free/webfonts/*.* dist/",
-    "copy_demo": "rm -f demo/*.css && rm -f demo/*.js && rm -f demo/*.ttf && rm -f demo/*.woff2 && cp dist/*.* demo/",
-    "minify_css": "lightningcss --minify dist/shariff.complete.css -o dist/shariff.complete.min.css && lightningcss --minify dist/shariff.min.css -o dist/shariff.min.min.css && lightningcss --minify dist/facebooklike_dlg.css -o dist/facebooklike_dlg.min.css",
-    "build": "rm -fr dist && mkdir dist && npm run -s compile_less && npm run -s compile_js && npm run -s minify_css && npm run -s copy_fonts",
+    "copy_fonts": "cp node_modules/@fortawesome/fontawesome-free/webfonts/*.woff2 dist/",
+    "copy_demo": "rm -f demo/*.css && rm -f demo/*.js && rm -f demo/*.woff2 && cp dist/*.* demo/",
+    "lint_scss": "stylelint src/style/*.scss src/style/**/*.scss demo/app.scss",
+    "build": "rm -fr dist && mkdir dist && npm run -s compile_css && npm run -s compile_js && npm run -s copy_fonts",
     "build_zip": "7z a -tzip $BASE_NAME.zip ./dist/* && 7z a -ttar $BASE_NAME.tar ./dist/* && 7z a $BASE_NAME.tar.gz $BASE_NAME.tar"
   },
   "repository": {
@@ -46,7 +50,7 @@
     }
   ],
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.2"
+    "@fortawesome/fontawesome-free": "^7.1.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -57,10 +61,12 @@
     "eslint": "^9.39.2",
     "jsdom": "^27.4.0",
     "jsdom-global": "^3.0.2",
-    "less": "^4.5.1",
-    "lightningcss-cli": "^1.30.2",
     "mocha": "^11.7.5",
-    "rollup": "^4.54.0"
+    "rollup": "^4.54.0",
+    "sass": "^1.97.1",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-standard-scss": "^16.0.0"
   },
   "keywords": [
     "heise",
