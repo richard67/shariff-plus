@@ -17,7 +17,7 @@
     "copy_demo": "rm -f demo/*.css && rm -f demo/*.js && rm -f demo/*.woff2 && cp dist/*.* demo/",
     "lint_scss": "stylelint src/style/*.scss src/style/**/*.scss demo/app.scss",
     "build": "rm -fr dist && mkdir dist && npm run -s compile_css && npm run -s compile_js && npm run -s copy_fonts",
-    "build_zip": "7z a -tzip $BASE_NAME.zip ./dist/* && 7z a -ttar $BASE_NAME.tar ./dist/* && 7z a $BASE_NAME.tar.gz $BASE_NAME.tar"
+    "build_zip": "7z a -tzip shariff-plus-$npm_package_version.zip ./dist/* && 7z a -ttar shariff-plus-$npm_package_version.tar ./dist/* && 7z a shariff-plus-$npm_package_version.tar.gz shariff-plus-$npm_package_version.tar"
   },
   "repository": {
     "type": "git",
