@@ -1,0 +1,50 @@
+name: CI Shariff-Plus
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  npm:
+    name: Install JS/CSS dependencies
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        cache: 'npm'
+    - name: Run npm ci
+    - run: npm ci
+
+  test:
+    name: Check Javascript & CSS code style and run test
+    runs-on: ubuntu-latest
+    needs: [npm]
+    steps:
+    - uses: actions/checkout@v4
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        cache: 'npm'
+    - name: Check code style and run test
+    - run: npm run test
+
+  build:
+    name: Build distribution
+    runs-on: ubuntu-latest
+    needs: [npm]
+    steps:
+    - uses: actions/checkout@v4
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        cache: 'npm'
+    - name: Run build
+    - run: npm run build
