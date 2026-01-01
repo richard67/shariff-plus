@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Run npm ci
       uses: actions/setup-node@v4
       with:
         node-version: latest
         cache: 'npm'
-    - name: Run npm ci
     - run: npm ci
 
   test:
@@ -29,11 +29,11 @@ jobs:
     needs: [npm]
     steps:
     - uses: actions/checkout@v4
+    - name: Check code style and run test
       uses: actions/setup-node@v4
       with:
         node-version: latest
         cache: 'npm'
-    - name: Check code style and run test
     - run: npm run test
 
   build:
@@ -42,9 +42,9 @@ jobs:
     needs: [npm]
     steps:
     - uses: actions/checkout@v4
+    - name: Run build
       uses: actions/setup-node@v4
       with:
         node-version: latest
         cache: 'npm'
-    - name: Run build
     - run: npm run build
