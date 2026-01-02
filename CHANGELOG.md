@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.0.0, 2026-01-02
+
+- Port to vanilla Javacript, without jQuery or other dependencies ([#22](https://github.com/richard67/shariff-plus/pull/22))
+- Minify CSS and JS, update dependencies & documentation, fix issues from PR [#22](https://github.com/richard67/shariff-plus/pull/22) ([#26](https://github.com/richard67/shariff-plus/pull/26))
+- Add Fontawesome v6/v7 classes ([#27](https://github.com/richard67/shariff-plus/pull/27))
+- Clean up package lock and update indirect development dependencies ([#28](https://github.com/richard67/shariff-plus/pull/28))
+- Migrate styles from less to dart sass and update fontawesome to v7 ([#29](https://github.com/richard67/shariff-plus/pull/29))
+
 ## v2.3.2, 2025-04-18
 
 Updated dependencies.
