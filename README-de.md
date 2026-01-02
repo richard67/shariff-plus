@@ -16,12 +16,13 @@ Shariff besteht aus zwei Teilen. Der erste Teil ist eine einfache JavaScript-Bib
 
 1. Das [aktuellste Shariff-Plus-Release](https://github.com/richard67/shariff-plus/releases/latest) herunterladen
 2. Alle im Release enthaltenen Dateien hochladen
-3.  CSS im `<head>` einbinden:
-    * `shariff.complete.css` verlässt sich auf die im Release enthaltenen Abhängigkeiten
-    * `shariff.min.css` verwenden, wenn [Font Awesome](https://github.com/FortAwesome/Font-Awesome) bereits in Ihrer Seite geladen wird
-4. JavaScript unmittelbar vor `</body>` einbinden:
-    * `shariff.complete.js` verlässt sich auf die im Release enthaltenen Abhängigkeiten
-    * `shariff.min.js` verwenden, wenn [jQuery](https://github.com/jquery/jquery) bereits in der Seite vorhanden ist
+3. CSS im `<head>` einbinden:
+    * `shariff.complete.min.css` verlässt sich auf die im Release enthaltenen Abhängigkeiten
+    * `shariff.min.min.css` verwenden, wenn [Font Awesome](https://github.com/FortAwesome/Font-Awesome) bereits in Ihrer Seite geladen wird
+    * Zum Debuggen kann jeweils die unminifizierten Datei `shariff.complete.css` oder `shariff.min.css` verwendet werden.
+4. JavaScript im `<head>` einbinden:
+    * `<script async src="shariff.complete.min.js" type="module"></script>`
+    * Zum Debuggen kann die unminifizierten Datei `shariff.complete.js` verwendet werden.
 5. Beliebig viele `<div class="shariff">` Elemente einfügen
 6. Mit den unten beschriebenen `data`-Attributen Aussehen und Funktion konfigurieren
 
@@ -34,6 +35,7 @@ Code-Beispiel:
 <html>
 <head>
     <link href="/path/to/shariff.min.css" rel="stylesheet">
+    <script async src="shariff.complete.js" type="module"></script>
 </head>
 <body>
     <h1>My article</h1>
@@ -44,9 +46,6 @@ Code-Beispiel:
 
     <h2>Fortgeschrittene Optionen:</h2>
     <div class="shariff" data-backend-url="/path/to/backend" data-url="https://www.example.com/my-article.html" data-theme="grey" data-orientation="vertical"></div>
-
-    <!-- vor dem schließenden </body>-Tag -->
-    <script src="/path/to/shariff.min.js"></script>
 </body>
 </html>
 ```
@@ -93,7 +92,7 @@ Unterschiede zu Shariff sind mit (1), (2) usw. markiert und werden unterhalb der
 | `data-button-style` | Wie die Buttons angezeigt werden. Werte: `standard`, `icon`, `icon-count`. Bei `icon` wird nur das Icon angezeigt, bei `icon-count` werden Icon und Zähler und bei `standard` Icon, Text und Zähler abhängig von der Display-Größe angezeigt. | `standard` |
 | `data-dialogs-media-url` (1) | Pfad zu css oder js für spezielle Dialoge wie z.B. den des Services `facebooklike` Dies muss eine absolute URL sein. Beispiel: `https://www.example.com/shariff`. Dies erlaubt es, eigene css z.B. für den Dialog `facebooklike` zu verwenden. | Pfad zum Verzeichnis, in dem Shariff-Plus installiert ist. |
 | `data-facebook-count-btn` (1) | Die Buttons(s), die den Zähler vom Backend anzeigen sollen, wenn beide Services `facebook` und `facebooklike` verwendet werden. Werte: `like`, `share`, `both`. | `like` |
-| `data-facebooklike-css` (1) | Name der CSS-Datei für den Dialog `facebooklike`. Die Datei muss im dem Ordner vorhanden sein, der mit der Option `data-dialogs-media-url` festgelegt wird. Beispiel : `data-facebooklike-css="my-styles.css"`. | `facebooklike_dlg.css` |
+| `data-facebooklike-css` (1) | Name der CSS-Datei für den Dialog `facebooklike`. Die Datei muss im dem Ordner vorhanden sein, der mit der Option `data-dialogs-media-url` festgelegt wird. Beispiel : `data-facebooklike-css="my-styles.css"`. | `facebooklike_dlg.min.css` |
 | `data-facebooklike-options` (1) | Objekt mit Optionen für den Button "Gefällt mir" von Facebook, wie sie der Facebook Konfigurator für den Button liefert. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Beispiel mit den Standardwerten von Facebook: `data-facebooklike-options="{&quot;width&quot;:450,&quot;layout&quot;:&quot;standard&quot;,&quot;action&quot;:&quot;like&quot;,&quot;size&quot;:&quot;large&quot;,&quot;show_faces&quot;:true,&quot;share&quot;:true,&quot;appId&quot;:&quot;99999&quot;}"` mit 99999 = Facebook `app_id`. | Siehe Beispiel, mit appId = Wert des Meta-Tags `fb:app_id` oder `null`, wenn nicht definiert. |
 | `data-info-url` (2) | URL der Infoseite. | `https://www.richard-fath.de/de/software/shariff-plus.html` |
 | `data-info-display` | Wie die Infoseite angezeigt wird. Werte: `blank`, `popup`, `self`. | `blank` |

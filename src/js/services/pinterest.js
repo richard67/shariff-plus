@@ -1,8 +1,6 @@
 'use strict'
 
-var url = require('url')
-
-module.exports = function (shariff) {
+export default function data(shariff) {
   var title = shariff.getTitle()
   var creator = shariff.getMeta('DC.creator')
   if (creator.length > 0) {
@@ -13,17 +11,16 @@ module.exports = function (shariff) {
     img = shariff.getMeta('og:image')
   }
 
-  var shareUrl = url.parse('https://www.pinterest.com/pin/create/link/', true)
-  shareUrl.query.url = shariff.getURL()
-  shareUrl.query.media = img
-  shareUrl.query.description = title
-  delete shareUrl.search
+  var shareUrl = new URL('https://www.pinterest.com/pin/create/link/');
+  shareUrl.searchParams.set('url', shariff.getURL());
+  shareUrl.searchParams.set('media', img);
+  shareUrl.searchParams.set('description', title);
 
   return {
     popup: true,
     shareText: 'pin it',
     name: 'pinterest',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-pinterest-p',
     title: {
       bg: 'Сподели в Pinterest',
@@ -52,6 +49,6 @@ module.exports = function (shariff) {
       tr: "Pinterest'ta paylaş",
       zh: '分享至Pinterest',
     },
-    shareUrl: url.format(shareUrl) + shariff.getReferrerTrack(),
+    shareUrl: shareUrl + shariff.getReferrerTrack()
   }
 }

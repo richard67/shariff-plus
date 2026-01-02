@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = encodeURIComponent(shariff.getURL())
   var title = encodeURIComponent(shariff.getTitle())
 
@@ -38,7 +38,7 @@ module.exports = function (shariff) {
       zh: '分享',
     },
     name: 'reddit',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-reddit-alien',
     title: {
       bg: 'Сподели в Reddit',

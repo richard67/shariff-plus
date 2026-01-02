@@ -1,12 +1,12 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   return {
     blank: shariff.getInfoDisplayBlank(),
     popup: shariff.getInfoDisplayPopup(),
     shareText: 'Info',
     name: 'info',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-info',
     title: {
       bg: 'Повече информация',

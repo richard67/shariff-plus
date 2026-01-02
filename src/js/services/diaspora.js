@@ -1,13 +1,9 @@
 'use strict'
 
-var url = require('url')
-
-module.exports = function (shariff) {
-  var shareUrl = url.parse('https://share.diasporafoundation.org/', true)
-  shareUrl.query.url = shariff.getURL()
-  shareUrl.query.title = shariff.getTitle()
-  shareUrl.protocol = 'https'
-  delete shareUrl.search
+export default function data(shariff) {
+  var shareUrl = new URL('https://share.diasporafoundation.org/');
+  shareUrl.searchParams.set('url', shariff.getURL());
+  shareUrl.searchParams.set('title', shariff.getTitle());
 
   return {
     popup: true,
@@ -39,7 +35,7 @@ module.exports = function (shariff) {
       zh: '分享',
     },
     name: 'diaspora',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-asterisk',
     title: {
       bg: 'Сподели в diaspora*',
@@ -68,6 +64,6 @@ module.exports = function (shariff) {
       tr: "diaspora*'ta paylaş",
       zh: '分享至diaspora*',
     },
-    shareUrl: url.format(shareUrl) + shariff.getReferrerTrack(),
+    shareUrl: shareUrl + shariff.getReferrerTrack()
   }
 }

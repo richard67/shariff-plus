@@ -1,0 +1,37 @@
+.shariff {
+    .buffer {
+        a {
+            background-color: #3a3a3a;
+
+            &:hover {
+                background-color: #555;
+            }
+        }
+
+        .fa-buffer {
+            font-size: 22px;
+        }
+
+        .share-count {
+            color: #3a3a3a;
+            background-color: #ddd;
+        }
+    }
+
+    .theme-white {
+        .buffer a {
+            color: #3a3a3a;
+        }
+    }
+}
+
+@media only screen and (width >= 600px) {
+    .shariff {
+        .buffer .fa-buffer {
+            font-size: 19px;
+            position: relative;
+            top: 1px;
+        }
+    }
+}
+

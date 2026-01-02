@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = encodeURIComponent(shariff.getURL())
   return {
     popup: true,
@@ -32,7 +32,7 @@ module.exports = function (shariff) {
       zh: '分享',
     },
     name: 'linkedin',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-linkedin-in',
     title: {
       bg: 'Сподели в LinkedIn',

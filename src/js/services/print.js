@@ -1,12 +1,12 @@
 /* jshint scripturl:true */
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = 'javascript:window.print();'
 
   return {
     name: 'print',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-print',
     popup: false,
     shareText: {

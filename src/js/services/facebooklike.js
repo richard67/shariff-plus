@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = shariff.getURL()
   var dialogTitle = shariff.getTitle()
   var shariffLang = shariff.getOption('lang')
@@ -110,7 +110,7 @@ module.exports = function (shariff) {
       zh: '赞',
     },
     name: 'facebooklike',
-    faPrefix: 'fas',
+    faPrefix: 'fas fa-solid',
     faName: 'fa-thumbs-up',
     title: {
       bg: 'Харесвам/Вече не харесвам във Facebook',

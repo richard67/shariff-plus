@@ -1,13 +1,13 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url = encodeURIComponent(shariff.getURL())
   var title = encodeURIComponent(shariff.getTitle())
   return {
     popup: true,
     shareText: 'Pocket',
     name: 'pocket',
-    faPrefix: 'fab',
+    faPrefix: 'fab fa-brands',
     faName: 'fa-get-pocket',
     title: {
       bg: 'Запазване в Pocket',

@@ -1,0 +1,29 @@
+.shariff {
+    .whatsapp {
+        a {
+            background-color: #5cbe4a;
+
+            &:hover {
+                background-color: #34af23;
+            }
+        }
+
+        .fa-whatsapp {
+            font-size: 28px;
+        }
+    }
+
+    .theme-white {
+        .whatsapp a {
+            color: #5cbe4a;
+        }
+    }
+}
+
+@media only screen and (width >= 600px) {
+    .shariff {
+        .whatsapp .fa-whatsapp {
+            font-size: 22px;
+        }
+    }
+}

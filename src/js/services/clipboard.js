@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (shariff) {
+export default function data(shariff) {
   var url =
     'javascript:' +
     'var d = document.createElement("input");' +
@@ -42,7 +42,7 @@ module.exports = function (shariff) {
       zh: '',
     },
     name: 'clipboard',
-    faPrefix: 'far',
+    faPrefix: 'far fa-regular',
     faName: 'fa-copy',
     title: {
       bg: '',
