@@ -1,4 +1,5 @@
 module.exports = {
+  bluesky: require('./bluesky'),
   buffer: require('./buffer'),
   clipboard: require('./clipboard'),
   diaspora: require('./diaspora'),
@@ -20,7 +21,6 @@ module.exports = {
   threema: require('./threema'),
   tumblr: require('./tumblr'),
   twitter: require('./twitter'),
-  bluesky: require('./bluesky'),
   vk: require('./vk'),
   weibo: require('./weibo'),
   whatsapp: require('./whatsapp'),
