@@ -54,8 +54,6 @@ const Defaults = {
 
   title: global.document.title,
 
-  blueksyVia: null,
-
   twitterVia: null,
 
   flattrUser: null,

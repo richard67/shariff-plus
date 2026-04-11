@@ -26,14 +26,11 @@ module.exports = function (shariff) {
   var title = shariff.getTitle()
 
   shareUrl.query.url = shariff.getURL()
-  if (shariff.options.blueskyVia !== null) {
-    shareUrl.query.via = shariff.options.blueskyVia
-  }
   // From Bluesky documentation (Decembe 2024):
   // The length of your passed text should not exceed 300 characters
   // when combined with any passed hashtags, via, or url parameters.
   var remainingTextLength =
-    300 - (shareUrl.query.via || '').length - (shareUrl.query.url || '').length
+    300 - (shareUrl.query.url || '').length
   shareUrl.query.text = abbreviateText(title, remainingTextLength)
 
   delete shareUrl.search
