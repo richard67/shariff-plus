@@ -27,7 +27,7 @@ module.exports = function (shariff) {
   var url = shariff.getURL()
   // From Bluesky documentation (Decembe 2024):
   // The post length limit on Bluesky is 300 characters.
-  var text = abbreviateText(title, 299 - url.length));
+  var text = abbreviateText(title, 299 - url.length);
   if (text.length > 0) {
     text += ' ' + url;
   } else {
