@@ -17,7 +17,7 @@ describe('Shariff', () => {
       let s = new Shariff(div)
       assert.deepEqual(
         s.options.services,
-        ['bluesky', 'facebook', 'info']
+        ['twitter', 'facebook', 'info']
       )
     })
   })
