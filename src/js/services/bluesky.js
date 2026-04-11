@@ -1,9 +1,11 @@
 'use strict'
 
-var url = require('url')
-
 // abbreviate at last blank before length and add "\u2026" (horizontal ellipsis)
 var abbreviateText = function (text, length) {
+  if (length <= 0) {
+    return ''
+  }
+
   var div = document.createElement('div')
   var node = document.createTextNode(text)
   div.appendChild(node)
@@ -21,19 +23,16 @@ var abbreviateText = function (text, length) {
 }
 
 module.exports = function (shariff) {
-  var shareUrl = url.parse('https://bsky.app/intent/compose', true)
-
   var title = shariff.getTitle()
-
-  shareUrl.query.url = shariff.getURL()
+  var url = shariff.getURL()
   // From Bluesky documentation (Decembe 2024):
-  // The length of your passed text should not exceed 300 characters
-  // when combined with any passed hashtags, via, or url parameters.
-  var remainingTextLength =
-    300 - (shareUrl.query.url || '').length
-  shareUrl.query.text = abbreviateText(title, remainingTextLength)
-
-  delete shareUrl.search
+  // The post length limit on Bluesky is 300 characters.
+  var text = abbreviateText(title, 299 - url.length));
+  if (text.length > 0) {
+    text += ' ' + url;
+  } else {
+    text = url;
+  }
 
   return {
     popup: true,
@@ -76,7 +75,9 @@ module.exports = function (shariff) {
       tr: "Bluesky'da paylaş",
       zh: 'Bluesky',
     },
-    // shareUrl: 'https://bsky.app/intent/compose?text='+ shariff.getShareText() + ' ' + url
-    shareUrl: url.format(shareUrl) + shariff.getReferrerTrack(),
+    shareUrl:
+      'https://bsky.app/intent/compose?text=' +
+      encodeURIComponent(text) +
+      shariff.getReferrerTrack(),
   }
 }
