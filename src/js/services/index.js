@@ -9,6 +9,7 @@ module.exports = {
   info: require('./info'),
   linkedin: require('./linkedin'),
   mail: require('./mail'),
+  mix: require('./mix'),
   pinterest: require('./pinterest'),
   pocket: require('./pocket'),
   print: require('./print'),
