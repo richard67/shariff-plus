@@ -14,7 +14,6 @@ module.exports = {
   print: require('./print'),
   qzone: require('./qzone'),
   reddit: require('./reddit'),
-  stumbleupon: require('./stumbleupon'),
   telegram: require('./telegram'),
   tencent: require('./tencent-weibo'),
   threema: require('./threema'),
