@@ -103,7 +103,7 @@ Unterschiede zu Shariff sind mit (1), (2) usw. markiert und werden unterhalb der
 | `data-media-url` | Zu teilendes Bild (pinterest) | `null` |
 | `data-orientation` | Anordnung der Buttons. Verfügbar: `horizontal`, `vertical` | `horizontal`  |
 | `data-referrer-track` | Wenn angegeben, wird dieser String an die geteilte URL angehängt. Mit `null` deaktivieren. | `null` |
-| `data-services` (3)   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;twitter&quot;]"` <br> Verfügbare Dienste: `buffer`, `clipboard`, `diaspora`, `facebook`, `facebooklike`, `fediverse`, `flipboard`, `info`, `linkedin`, `mail`, `mix`, `pinterest`, `pocket`, `print`, `qzone`, `reddit`, `telegram`, `tencent`, `threema`, `tumblr`, `twitter`, `vk`, `weibo`, `whatsapp`, `xing` | `twitter`, `facebooklike`, `facebook`, `info` |
+| `data-services` (3)   | Liste der Services, die verwendet werden sollen. Für die Verwendung im `data`-Attribut muss die Angabe Entity-enkodiert werden. Die Reihenfolge wird berücksichtigt. Beispiel: `data-services="[&quot;facebook&quot;,&quot;twitter&quot;]"` <br> Verfügbare Dienste: `bluesky`, `buffer`, `clipboard`, `diaspora`, `facebook`, `facebooklike`, `fediverse`, `flipboard`, `info`, `linkedin`, `mail`, `mix`, `pinterest`, `pocket`, `print`, `qzone`, `reddit`, `telegram`, `tencent`, `threema`, `tumblr`, `twitter`, `vk`, `weibo`, `whatsapp`, `xing` | `twitter`, `facebooklike`, `facebook`, `info` |
 | `data-theme`       | Farbschema auswählen. Verfügbar: `standard`, `grey` und `white`. | `standard` |
 | `data-title`       | Titel der zu teilenden Seite. | Entweder `DC.title`/`DC.creator` oder `<title>` |
 | `data-twitter-via` | User von dem der Tweet ursprünglich stammt. | `null` |
@@ -113,7 +113,7 @@ Unterschiede zu Shariff sind mit (1), (2) usw. markiert und werden unterhalb der
 
 (2) Der Standardwert bei Shariff ist `https://ct.de/-2467514`.
 
-(3) Die Services `facebooklike` und `mix` gibt es nur bei Shariff-Plus.
+(3) Die Services `bluesky`, `facebooklike` und `mix` gibt es nur bei Shariff-Plus.
 
 ## Konstruktor-Argumente
 
@@ -173,6 +173,7 @@ Die jeweils aktuell letzten und vorletzten Versionen von Firefox, Google Chrome,
 
 Shariff-Plus unterstützt folgende Social-Sharing-Services:
 
+- bluesky
 - buffer
 - Clipboard
 - diaspora*
