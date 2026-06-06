@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.1.0, 2026-06-06
+
+- Add Bluesky service ([#33](https://github.com/richard67/shariff-plus/pull/33))
+- Replace StumbleUpon service by Mix ([#34](https://github.com/richard67/shariff-plus/pull/34))
+- Update dependencies and GitHub actions
+
 ## v3.0.0, 2026-01-02
 
 - Port to vanilla Javacript, without jQuery or other dependencies ([#22](https://github.com/richard67/shariff-plus/pull/22))
