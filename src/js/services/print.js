@@ -12,7 +12,7 @@ export default function data(shariff) {
     shareText: {
       bg: '',
       cs: 'tlačit',
-      da: '',
+      da: 'Udskriv',
       de: 'drucken',
       en: 'print',
       es: 'impresión',
@@ -39,7 +39,7 @@ export default function data(shariff) {
     title: {
       bg: '',
       cs: 'tlačit',
-      da: '',
+      da: 'Udskriv',
       de: 'drucken',
       en: 'print',
       es: 'impresión',
