@@ -280,6 +280,9 @@ export class Shariff {
         // faPrefix can contain multiple classes, which we have to add one by one (e.g. twitter)
         service.faPrefix.split(" ").forEach((element) => prefix.classList.add(element));
         prefix.classList.add(service.faName);
+        // The icon is decorative; hide it from assistive technology so its
+        // glyph cannot leak into the button's accessible name.
+        prefix.setAttribute('aria-hidden', 'true');
         shareLink.prepend(prefix);
       }
 
@@ -307,7 +310,14 @@ export class Shariff {
 
       // add attributes for screen readers
       shareLink.setAttribute('role', 'button');
-      shareLink.setAttribute('aria-label', this.getLocalized(service, 'title'));
+      // In the 'standard' button-style the visible share text is the button's
+      // accessible name. Overriding it with the (different) descriptive title
+      // would remove the visible label from the accessible name and violate
+      // WCAG 2.5.3 "Label in Name". Only provide an aria-label when there is no
+      // visible text label, i.e. in the icon button-styles.
+      if (this.options.buttonStyle !== 'standard') {
+        shareLink.setAttribute('aria-label', this.getLocalized(service, 'title'));
+      }
 
       li.append(shareLink);
 
