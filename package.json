@@ -78,5 +78,8 @@
   "license": "MIT",
   "lint-staged": {
     "*.js": "eslint --cache --fix"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.6": true
   }
 }
